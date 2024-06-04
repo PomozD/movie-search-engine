@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+$Arial: "Arial";
+
+$RobotoCondensed: "Roboto Condensed";
+$EBGaramond: "EB Garamond";
+$Manrope: 'Manrope';
+
+$RegularWeight: 400;
+$MediumWeight: 500;
+$SemiBoldWeight: 600;
+$BoldWeight: 700;
+
+$mainColor1: #001436;
+$mainColor2: #080C27;
+$mainColor3: #094554;
+$mainColor4: #1d1e41;
+
+$blue: #625DF5;
+$cyan: #3DAFF1;
+$pink: #E55EB6;
+$purple: #5C1EDE;
+$purple: #5C1EDE;
+
+$extraColor: #10152E;
+
+$whiteColor: #fff;
+$greyTextColor: #88A1AD;
+$greyTextExtraColor: #b8c4d0;
+
+$mainGreyColor: #2D2D2D;
+
+$btnBackground: $blue;
+$btnColor: $whiteColor;
+
+* {
+    scroll-behavior: smooth;
+    font-family: $Manrope;
+}
+
+a {
+    text-decoration: none;
+    color: $greyTextColor;
+    font-weight: $MediumWeight;
+    transition: .3s;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+        color: $whiteColor;
+    }
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.btn {
+    width: 35%;
+    text-align: center;
+    color: $btnColor;
+    background-color: $btnBackground;
+    padding: 18px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: .4s;
+    border: none;
+    font-size: 15px;
+    font-weight: $MediumWeight;
+
+    &:hover {
+        background-color: #4a46ef;
+    }
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    a, span {
+        color: $greyTextColor;
+        font-weight: $MediumWeight;
+        transition: .3s;
+        font-size: 14px;
+    }
+
+    a {
+        &:hover {
+            color: $whiteColor;
+        }
+    }
+
+    img {
+        width: 15px;
+    }
+}
