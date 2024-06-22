@@ -119,7 +119,7 @@ export default {
 
                 .footer-logo {
                     img {
-                        width: 100px;
+                        width: 120px;
                     }
                 }
 
@@ -130,10 +130,16 @@ export default {
                     align-items: center;
 
                     .icon__facebook, .icon__instagram, .icon__vk {
-                        width: 30px;
-                        height: 30px;
+                        width: 40px;
+                        height: 40px;
                     }
                 }
+            }
+        }
+
+        .footer__politicies {
+            p {
+                font-size: 16px;
             }
         }
     }
@@ -145,7 +151,7 @@ export default {
 
 @media screen and (max-width: 767px) {
     .footer {
-        margin: 100px auto 0 auto;
+        margin: 20px auto 0 auto;
         padding-bottom: 10px;
 
         .footer__container {
@@ -181,6 +187,7 @@ export default {
         }
 
         .footer__politicies {
+            margin-bottom: 0px;
             p {
                 font-size: 14px;
             }

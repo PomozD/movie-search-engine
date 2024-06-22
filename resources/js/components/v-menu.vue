@@ -1,6 +1,6 @@
 <template>
     <div class="container-menu">
-        <div class="logo" v-if="!verticalMenu">
+        <div class="logo" v-if="!isAuthorize() || isMobileView">
             <router-link to="/">
                 <img class="logo-img" src="../assets/images/logo.png">
             </router-link>
@@ -87,6 +87,8 @@ export default {
             verticalMenu: false,
 
             showRecommendationsLabel: false,
+
+            isMobileView: window.innerWidth <= 767,
         }
     },
 
@@ -104,7 +106,16 @@ export default {
         },
 
         toggleLabels(show) {
-            this.showRecommendationsLabel = show;
+            if(!this.isMobileView) {
+                this.showRecommendationsLabel = show;
+            }
+        },
+
+        handleResize() {
+            this.isMobileView = window.innerWidth <= 767;
+            this.showRecommendationsLabel = false;
+            console.log('isMobileView:', this.isMobileView);
+            console.log('isAuthorize:', this.isAuthorize());
         },
     },
 
@@ -128,7 +139,7 @@ export default {
 
         isAdmin() {
             return this.$route.path === '/admin';
-        },
+        }
     },
 
     async created() {
@@ -137,7 +148,12 @@ export default {
         this.verticalMenu = this.isAuthorize();
         console.log(this.verticalMenu);
 
+        window.addEventListener('resize', this.handleResize);
     },
+
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handleResize);
+    }
 }
 </script>
 
@@ -234,6 +250,7 @@ export default {
         left: 0;
         top: 0;
         transition: width .5s;
+        margin-left: 0;
 
         .menu-icon-container {
             width: 100%;
@@ -328,10 +345,21 @@ export default {
     .container-menu {
 
         .logo {
-
+            margin-top: 10px;
             .logo-img {
                 width: 100%;
-                height: 26px;
+                height: 45px;
+            }
+        }
+
+        .auth {
+            display: flex;
+            gap: 0 30px;
+            margin-left: auto;
+            margin-top: 15px;
+
+            a {
+                font-size: 18px;
             }
         }
 
@@ -344,6 +372,7 @@ export default {
             left: 0;
             top: 0;
             transition: width .5s;
+            margin-left: 0;
 
             .menu-icon-container {
                 width: 100%;
@@ -425,14 +454,26 @@ export default {
 }
 
 @media screen and (max-width: 767px) {
-    .container-menu {
+    /*.container-menu {
         z-index: 2;
 
         .logo {
-
+            margin-top: 10px;
             .logo-img {
                 width: 100%;
-                height: 26px;
+                height: 35px;
+                margin-top: -10px;
+            }
+        }
+
+        .auth {
+            display: flex;
+            gap: 0 15px;
+            margin-left: auto;
+            margin-top: 8px;
+
+            a {
+                font-size: 18px;
             }
         }
 
@@ -500,6 +541,126 @@ export default {
                 opacity: 0;
                 transform: translateY(-20px);
                 margin-left: 10px;
+                color: $whiteColor;
+                font-weight: $RegularWeight;
+                font-size: 14px;
+            }
+
+            .sidebar-logo {
+                display: none;
+            }
+
+            .logout {
+                margin: 0;
+            }
+
+            .collections {
+                background: transparent;
+            }
+
+            .recommendations {
+                background: transparent;
+            }
+
+            .admin {
+                background: transparent;
+            }
+
+            &:hover {
+                width: 100%;
+            }
+
+        }
+    }*/
+
+    .container-menu {
+        z-index: 3;
+        position: relative;
+
+        .logo {
+            margin-top: 10px;
+            .logo-img {
+                width: 100%;
+                height: 35px;
+                margin-top: -10px;
+            }
+        }
+
+        .auth {
+            display: flex;
+            gap: 0 15px;
+            margin-left: auto;
+            margin-top: 8px;
+
+            a {
+                font-size: 18px;
+            }
+        }
+
+        .sidebar-menu {
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 92%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            z-index: 10;
+            margin-left: 0;
+
+            .menu-icon-container {
+                flex: 1;
+                text-align: center;
+
+                .menu-icon {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-left: 0px;
+                    padding: 13px 20px;
+                    transition: padding 1s, font-size 1s, width 1s;
+                    text-align: center;
+
+                    .logout-btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        flex-direction: column;
+                        img {
+                            width: 20px;
+                            transition: .5s;
+                        }
+                    }
+
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 10px;
+                        img {
+                            width: 20px;
+                            transition: .5s;
+                        }
+                    }
+                }
+
+                &:hover {
+                    background-color: transparent;
+                }
+            }
+
+            .label {
+                display: none;
+                transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+                opacity: 0;
+                transform: translateY(-20px);
+                margin-left: 0px;
                 color: $whiteColor;
                 font-weight: $RegularWeight;
                 font-size: 14px;

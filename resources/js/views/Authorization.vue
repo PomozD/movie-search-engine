@@ -94,13 +94,10 @@ export default {
                 if(response[0].type === 1){
                     alert(response[0].message);
                 } else {
-                    alert('Вы авторизованы');
                     this.$router.push("/collections?userID=" + response[0].user.id);
                 }
 
                 this.updateUser(response[0].user);
-            } else {
-                alert('Проверьте правильность заполнения полей');
             }
         },
 
@@ -115,7 +112,6 @@ export default {
             if(response[0].type === 1){
                 alert("Произошла ошибка авторизации, проверьте данные");
             } else {
-                alert('Вы авторизованы');
                 this.$router.push("/collections?userID=" + response[0].user.id);
             }
 
@@ -295,6 +291,323 @@ export default {
 
                         &:hover {
                             color: $greyTextColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    .container__auth {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .login-box {
+            margin: 20px auto;
+            width: 500px;
+            border-radius: 10px;
+
+            .titles {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+
+                h1 {
+                    .custom-a {
+                        font-size: 23px;
+                        font-weight: $MediumWeight;
+                    }
+
+                    .auth {
+                        color: $whiteColor;
+                    }
+
+                    .reg {
+                        color: $greyTextColor;
+
+                        &:hover {
+                            color: $whiteColor;
+                        }
+                    }
+                }
+            }
+
+            .google-button {
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                border: 2px solid $blue;
+                text-align: center;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    background: none;
+                    border: none;
+                    padding: 8px 0;
+                    cursor: pointer;
+                    color: $btnColor;
+                    transition: .4s;
+                    font-size: 23px;
+                }
+
+                img {
+                    width: 45px;
+                    margin-right: 15px;
+                }
+            }
+
+            .auth-divider {
+                margin-top: 20px;
+                text-align: center;
+
+                p {
+                    color: $greyTextColor;
+                    font-weight: $MediumWeight;
+                    font-size: 16px;
+                }
+            }
+
+            form {
+                margin-top: 35px;
+
+                .user-box {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 10px;
+
+                    input {
+                        position: relative;
+                        font-size: 18px;
+                        color: $greyTextColor;
+                        border: 2px solid $greyTextColor;
+                        border-radius: 5px;
+                        outline: none;
+                        background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                        padding: 15px;
+                    }
+
+                    label {
+                        position: relative;
+                        left: 18px;
+                        top: -46px;
+                        padding: 18px 0;
+                        font-size: 16px;
+                        color: #a6a6a6;
+                        pointer-events: none;
+                        line-height: 0.2;
+                        transition: .5s;
+                    }
+
+                    input:focus ~ label, input:valid ~ label {
+                        top: -95px;
+                        left: 0;
+                    }
+
+                    .invalid__data {
+                        color: #d34339;
+                        margin-top: -35px;
+                        font-size: 14px;
+                        margin-bottom: 25px;
+                    }
+                }
+
+                .button-form {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 20px auto;
+
+                    button {
+                        width: 100%;
+                        border: none;
+                        font-weight: $MediumWeight;
+                        font-size: 18px;
+                    }
+
+                    #reg {
+                        font-size: 16px;
+                        margin: 20px auto;
+                        color: $greyTextColor;
+
+                        .enter {
+                            font-size: 16px;
+                            color: $whiteColor;
+                            transition: .2s;
+
+                            &:hover {
+                                color: $greyTextColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .container__auth {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .login-box {
+            margin: 20px auto;
+            width: 100%;
+            border-radius: 10px;
+
+            .titles {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+
+                h1 {
+                    .custom-a {
+                        font-size: 23px;
+                        font-weight: $MediumWeight;
+                    }
+
+                    .auth {
+                        color: $whiteColor;
+                    }
+
+                    .reg {
+                        color: $greyTextColor;
+
+                        &:hover {
+                            color: $whiteColor;
+                        }
+                    }
+                }
+            }
+
+            .google-button {
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                border: 2px solid $blue;
+                text-align: center;
+
+                button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    background: none;
+                    border: none;
+                    padding: 8px 0;
+                    cursor: pointer;
+                    color: $btnColor;
+                    transition: .4s;
+                    font-size: 23px;
+                }
+
+                img {
+                    width: 45px;
+                    margin-right: 15px;
+                }
+            }
+
+            .auth-divider {
+                margin-top: 20px;
+                text-align: center;
+
+                p {
+                    color: $greyTextColor;
+                    font-weight: $MediumWeight;
+                    font-size: 18px;
+                }
+            }
+
+            form {
+                margin-top: 35px;
+
+                .user-box {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 10px;
+
+                    input {
+                        position: relative;
+                        font-size: 18px;
+                        color: $greyTextColor;
+                        border: 2px solid $greyTextColor;
+                        border-radius: 5px;
+                        outline: none;
+                        background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                        padding: 15px;
+                    }
+
+                    label {
+                        position: relative;
+                        left: 18px;
+                        top: -46px;
+                        padding: 18px 0;
+                        font-size: 16px;
+                        color: #a6a6a6;
+                        pointer-events: none;
+                        line-height: 0.2;
+                        transition: .5s;
+                    }
+
+                    input:focus ~ label, input:valid ~ label {
+                        top: -95px;
+                        left: 0;
+                    }
+
+                    .invalid__data {
+                        color: #d34339;
+                        margin-top: -35px;
+                        font-size: 14px;
+                        margin-bottom: 25px;
+                    }
+                }
+
+                .button-form {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 20px auto;
+
+                    button {
+                        width: 100%;
+                        border: none;
+                        font-weight: $MediumWeight;
+                        font-size: 18px;
+                    }
+
+                    #reg {
+                        width: 100%;
+                        font-size: 16px;
+                        margin: 30px 0 0 0;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        color: $greyTextColor;
+
+                        .enter {
+                            margin: 10px auto 0 auto;
+                            font-size: 16px;
+                            color: $whiteColor;
+                            transition: .2s;
+
+                            &:hover {
+                                color: $greyTextColor;
+                            }
                         }
                     }
                 }

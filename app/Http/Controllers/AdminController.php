@@ -248,27 +248,22 @@ class AdminController extends Controller
     public static function addCountry(Request $request) {
         try {
             $newCountry = $request['newCountry'];
-
             $addCountry = Countrie::where('country', $newCountry)->first();
-
             if (!$addCountry) {
                 $country = Countrie::create([
                     'country' => $newCountry,
                 ]);
-
                 if(!$country) {
                     throw new \InvalidArgumentException("Произошла ошибка при добавлении страны");
                 }
             } else {
                 throw new \InvalidArgumentException("Страна уже существует");
             }
-
             return [
                 "status" => true,
                 "type" => 0,
                 "message" => 'Добавлена новая страна',
             ];
-
         } catch (\Exception $e) {
             return [
                 "status" => false,

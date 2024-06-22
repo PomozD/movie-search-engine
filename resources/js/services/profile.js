@@ -72,7 +72,7 @@ export const getSuggestions = async (id) => {
 }
 
 export const deleteSuggestion = async (id, tickedID) => {
-    const response = await axios.get('api/users/profile/deleteSuggestion?id=' + id + '&tickedID=' + tickedID);
+    const response = await axios.get('/api/users/profile/deleteSuggestion?id=' + id + '&tickedID=' + tickedID);
     console.log(response.data);
     return response.data;
 }

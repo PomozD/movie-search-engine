@@ -321,7 +321,6 @@ export default {
                         const newresponse = await getUserInfo(this.$route.query.userID);
                         this.updateUser(newresponse.userInfo);
                         this.state.user = newresponse.userInfo;
-                        alert('Данные изменены');
 
                         this.state[editingState] = false;
 
@@ -381,7 +380,6 @@ export default {
             );
 
             if(response.type === 0) {
-                alert('Фильм предложен');
                 this.tickets = await this.getSuggestion();
             } else {
                 alert('Фильм не предложен');
@@ -585,6 +583,342 @@ export default {
                                 margin-top: 15px;
                                 width: 25px;
                                 transition: transform 0.3s ease;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    .section-container {
+        margin-left: 50px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+        h1, h2 {
+            color: $greyTextColor;
+        }
+
+        h1 {
+            margin-left: -2px;
+            margin-top: 40px;
+            font-size: 48px;
+            line-height: 0;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-weight: $SemiBoldWeight;
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            .wrapper {
+                width: 100%;
+                .container__profile {
+                    h2 {
+                        color: $greyTextColor;
+                        line-height: 0;
+                    }
+                    .profile {
+                        margin-top: 50px;
+
+                        .suggest-container {
+                            .suggest-details {
+                                margin-bottom: 15px;
+
+                                .data-container {
+                                    width: 100%;
+                                    margin-top: 10px;
+                                    border-radius: 5px;
+                                    background-color: $extraColor;
+                                    color: $greyTextColor;
+                                    z-index: 1000;
+                                    transition: .2s;
+
+                                    .title {
+                                        background-color: #052731;
+                                        padding: 5px 10px;
+                                        font-size: 16px;
+                                    }
+
+                                    .details-container {
+                                        padding: 0 15px;
+
+                                        .suggest-data {
+                                            margin-top: 10px;
+                                            .data-input {
+                                                margin-top: 10px;
+                                                font-size: 16px;
+                                                color: $greyTextColor;
+                                                border: 1px solid $greyTextColor;
+                                                border-radius: 5px;
+                                                outline: none;
+                                                background: transparent;
+                                                padding: 15px 15px;
+                                                min-width: 30%;
+                                                max-width: 60%;
+                                                line-height: 0;
+                                            }
+
+                                            .data-select {
+                                                margin-top: 10px;
+                                                color: $greyTextColor;
+                                                background: transparent;
+                                                padding: 15px 15px;
+                                                border-radius: 5px;
+                                                border: 1px solid $greyTextColor;
+                                            }
+                                        }
+
+                                        .suggest-data[open] {
+                                            summary {
+                                                img {
+                                                    transform: rotate(180deg);
+                                                }
+                                            }
+                                        }
+
+                                        .buttons {
+                                            padding: 30px 0 20px 0;
+                                            width: 30%;
+
+                                            .btn {
+                                                width: 80%;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .tickets-container {
+                                    display: flex;
+                                    gap: 20px;
+                                    padding: 0 10px;
+
+                                    .ticket-data {
+                                        font-size: 16px;
+                                        padding: 10px 0;
+                                    }
+
+                                    .btn-delete {
+                                        background-color: #b8b9e0;
+                                        color: #0a0a0a;
+                                        border: none;
+                                        height: 40px;
+                                        text-align: center;
+                                        border-radius: 4px;
+                                        cursor: pointer;
+                                        transition: .4s;
+                                        font-size: 16px;
+                                        font-weight: $MediumWeight;
+
+                                        &:hover {
+                                            background-color: #d6d8ec;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .suggest-details[open]{
+
+                                .suggest-title {
+                                    .arrowdown {
+                                        transform: rotate(180deg);
+                                    }
+                                }
+                            }
+
+                            summary {
+                                cursor: pointer;
+                                list-style: none;
+                                display: flex;
+                                align-items: center;
+                                line-height: 0;
+                                gap: 10px;
+
+                                .arrowdown {
+                                    margin-top: 15px;
+                                    width: 25px;
+                                    transition: transform 0.3s ease;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .section-container {
+        margin-left: 0px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+        h1, h2 {
+            color: $greyTextColor;
+        }
+
+        h1 {
+            margin-left: -2px;
+            margin-top: 40px;
+            font-size: 35px;
+            line-height: 1;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-weight: $SemiBoldWeight;
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            .wrapper {
+                width: 100%;
+                .container__profile {
+                    h2 {
+                        color: $greyTextColor;
+                        line-height: 0;
+                    }
+                    .profile {
+                        margin-top: 50px;
+
+                        .suggest-container {
+                            .suggest-details {
+                                margin-bottom: 15px;
+
+                                .data-container {
+                                    width: 100%;
+                                    margin-top: 10px;
+                                    border-radius: 5px;
+                                    background-color: $extraColor;
+                                    color: $greyTextColor;
+                                    z-index: 1000;
+                                    transition: .2s;
+
+                                    .title {
+                                        background-color: #052731;
+                                        padding: 5px 10px;
+                                        font-size: 16px;
+                                    }
+
+                                    .details-container {
+                                        padding: 0 15px;
+
+                                        .suggest-data {
+                                            margin-top: 10px;
+                                            .data-input {
+                                                margin-top: 10px;
+                                                font-size: 16px;
+                                                color: $greyTextColor;
+                                                border: 1px solid $greyTextColor;
+                                                border-radius: 5px;
+                                                outline: none;
+                                                background: transparent;
+                                                padding: 15px 15px;
+                                                min-width: 30%;
+                                                max-width: 60%;
+                                                line-height: 0;
+                                            }
+
+                                            .data-select {
+                                                margin-top: 10px;
+                                                color: $greyTextColor;
+                                                background: transparent;
+                                                padding: 15px 15px;
+                                                border-radius: 5px;
+                                                border: 1px solid $greyTextColor;
+                                            }
+                                        }
+
+                                        .suggest-data[open] {
+                                            summary {
+                                                img {
+                                                    transform: rotate(180deg);
+                                                }
+                                            }
+                                        }
+
+                                        .buttons {
+                                            padding: 30px 0 20px 0;
+                                            width: 30%;
+
+                                            .btn {
+                                                width: 120%;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .tickets-container {
+                                    display: flex;
+                                    gap: 10px;
+                                    padding: 0 10px;
+
+                                    .ticket-data {
+                                        font-size: 14px;
+                                        padding: 10px 0;
+                                    }
+
+                                    h2 {
+                                        font-size: 14px;
+                                    }
+
+                                    .btn-delete {
+                                        background-color: #b8b9e0;
+                                        color: #0a0a0a;
+                                        border: none;
+                                        height: 40px;
+                                        text-align: center;
+                                        border-radius: 4px;
+                                        cursor: pointer;
+                                        transition: .4s;
+                                        font-size: 16px;
+                                        font-weight: $MediumWeight;
+
+                                        &:hover {
+                                            background-color: #d6d8ec;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .suggest-details[open]{
+
+                                .suggest-title {
+                                    .arrowdown {
+                                        transform: rotate(180deg);
+                                    }
+                                }
+                            }
+
+                            summary {
+                                cursor: pointer;
+                                list-style: none;
+                                display: flex;
+                                align-items: center;
+                                line-height: 0;
+                                gap: 10px;
+
+                                .arrowdown {
+                                    margin-top: 15px;
+                                    width: 25px;
+                                    transition: transform 0.3s ease;
+                                }
                             }
                         }
                     }

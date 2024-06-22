@@ -194,9 +194,11 @@
 import vClickOutside from 'v-click-outside';
 import { getRecommendationMovies, addRating, getRating, getMoviesData } from '../services/recommendation.js';
 import { getCollections, addMovieToCollection } from '../services/films.js';
+import Page404 from "./Page404.vue";
 
 export default {
     name: "RegistrationView",
+    components: {Page404},
     data() {
         return {
             recommendationMovies: [],
@@ -411,9 +413,9 @@ export default {
             this.selectedCollection = collection;
             try {
                 const response = await addMovieToCollection(this.$route.query.userID, this.recommendationMovies[0]['id'], this.selectedCollection);
-                if(response.status) {
+                /*if(response.status) {
                     alert(response.message);
-                }
+                }*/
             } catch (error) {
                 console.error('Ошибка при добавлении фильма в подборку:', error);
             }
@@ -1457,7 +1459,7 @@ export default {
                             width: 60%;
 
                             .film-logo {
-                                margin-top: 50px;
+                                margin-top: 0px;
                                 margin-bottom: -50px;
                                 display: flex;
                                 justify-content: center;
@@ -1474,7 +1476,7 @@ export default {
                             }
 
                             .film-name {
-                                margin-top: 100px;
+                                margin-top: 0px;
                                 width: 600px;
 
                                 h1 {
@@ -1484,7 +1486,7 @@ export default {
                             }
 
                             .long-text {
-                                margin-top: 122px;
+                                margin-top: 0px;
 
                                 h1 {
                                     font-size: 38px;
@@ -1677,7 +1679,7 @@ export default {
                         }
 
                         .navigate-recommendation-container {
-                            margin-top: 60px;
+                            margin-top: 100px;
                             width: 100%;
                             display: flex;
                             justify-content: center;
@@ -1929,7 +1931,7 @@ export default {
 
                     .filter-genres, .filter-countries, .filter-years, .filter-ratings {
                         display: flex;
-                        justify-content: center;
+                        justify-content: space-between;
                         align-items: center;
                         font-size: 12px;
                         color: $greyTextColor;
@@ -1943,6 +1945,7 @@ export default {
                         gap: 15px;
                         transition: .2s;
                         width: 100%;
+                        position: relative;
 
                         img {
                             margin-top: 3px;
@@ -2001,16 +2004,16 @@ export default {
                                 }
 
                                 .genre-columns {
-                                    columns: 3;
+                                    columns: 2;
                                 }
 
                                 .year-columns {
-                                    columns: 4;
+                                    columns: 3;
                                 }
 
                                 .countrie-columns {
-                                    columns: 3;
-                                    column-gap: 0;
+                                    columns: 2;
+                                    column-gap: 20px;
                                 }
 
                                 .rating-columns {
@@ -2088,8 +2091,9 @@ export default {
             .recommendation-container {
                 background-color: $mainColor3;
                 border-radius: 10px;
-                width: 90%;
+                width: 100%;
                 cursor: pointer;
+                margin-bottom: 150px;
 
                 .recommendation-data {
                     background-size: cover;
@@ -2111,12 +2115,13 @@ export default {
                         width: 100%;
 
                         .film {
-                            position: relative;
+                            position: absolute;
                             margin-left: 20px;
-                            width: 60%;
+                            width: 80%;
+                            height: 100%;
 
                             .film-logo {
-                                margin-top: 50px;
+                                margin-top: 0px;
                                 margin-bottom: -50px;
                                 display: flex;
                                 justify-content: center;
@@ -2133,7 +2138,7 @@ export default {
                             }
 
                             .film-name {
-                                margin-top: 80px;
+                                margin-top: 0px;
                                 width: 200px;
                                 word-wrap: break-word;
                                 word-break: break-all;
@@ -2158,17 +2163,21 @@ export default {
                             }
 
                             .film-description {
+                                position: absolute;
+                                top: 25%;
                                 color: $whiteColor;
                                 font-weight: $RegularWeight;
-                                font-size: 14px;
+                                font-size: 16px;
                                 margin-top: 30px;
                             }
 
                             .film-data {
+                                position: absolute;
+                                top: 50%;
                                 display: flex;
                                 flex-wrap: wrap;
                                 color: $whiteColor;
-                                font-size: 14px;
+                                font-size: 16px;
                                 gap: 10px;
 
                                 .genres {
@@ -2179,10 +2188,12 @@ export default {
                             }
 
                             .rating-container {
+                                position: absolute;
+                                top: 65%;
                                 color: $whiteColor;
                                 display: flex;
                                 flex-direction: column;
-                                margin-top: 0px;
+                                margin-top: 50px;
                                 gap: 10px;
                                 transition: .2s;
                                 z-index: 0;
@@ -2193,7 +2204,7 @@ export default {
                                     align-items: center;
                                     gap: 10px;
                                     font-weight: $MediumWeight;
-                                    font-size: 14px;
+                                    font-size: 16px;
 
                                     .rating, .not-rating {
                                         background-color: #181232;
@@ -2208,7 +2219,7 @@ export default {
                                     }
 
                                     .not-rating {
-                                        font-size: 15px;
+                                        font-size: 16px;
                                         font-weight: $RegularWeight;
                                         padding: 12px 10px;
                                     }
@@ -2301,18 +2312,20 @@ export default {
                             }
 
                             .rating-btn-container {
-                                margin-top: 20px;
+                                position: absolute;
+                                top: 98%;
+                                margin-top: 30px;
                                 display: inline-block;
                                 background-color: #b8b9e0;
                                 border-radius: 50px;
                                 padding: 12px 10px;
-                                position: absolute;
                                 cursor: pointer;
                                 z-index: 0;
                                 transition: .3s;
+                                margin-left: -20px;
 
                                 .rating-btn {
-                                    font-size: 14px;
+                                    font-size: 16px;
                                     font-weight: $SemiBoldWeight;
                                     transition: .3s;
                                 }
@@ -2324,20 +2337,22 @@ export default {
                             }
 
                             .add-rating-container {
+                                position: absolute;
+                                top: 100%;
                                 display: flex;
                                 gap: 12px;
                                 margin-top: 20px;
-                                margin-left: 10px;
+                                margin-left: -5px;
                                 background-color: #cccde5;
                                 border-radius: 50px;
                                 padding: 12px 23px;
-                                position: absolute;
+
                                 z-index: 0;
                                 transition: .3s;
                                 transform: scale(1.1);
 
                                 .add-rating {
-                                    font-size: 14px;
+                                    font-size: 16px;
                                     font-weight: $BoldWeight;
                                     cursor: pointer;
                                 }
@@ -2345,7 +2360,9 @@ export default {
                         }
 
                         .navigate-recommendation-container {
-                            margin-top: 120px;
+                            position: absolute;
+                            top: 90%;
+                            margin-top: 150px;
                             width: 100%;
                             display: flex;
                             justify-content: center;
@@ -2362,15 +2379,15 @@ export default {
                                 align-items: center;
                                 background-color: #cccde5;
                                 border-radius: 50px;
-                                padding: 8px;
+                                padding: 15px;
 
                                 .navigate-img {
                                     padding: 5px;
                                     border-radius: 50px;
-                                    height: 20px;
+                                    height: 30px;
 
                                     img {
-                                        width: 20px;
+                                        width: 30px;
                                     }
                                 }
                             }
@@ -2378,12 +2395,12 @@ export default {
                             .add-movie-btn {
                                 position: relative;
                                 display: inline-flex;
-                                padding: 9px;
+                                padding: 15px;
                                 transition: .2s;
                                 z-index: 0;
 
                                 img {
-                                    width: 35px;
+                                    width: 30px;
                                 }
 
                                 &:hover {
@@ -2493,7 +2510,7 @@ export default {
                 cursor: pointer;
                 gap: 15px;
                 transition: .2s;
-                width: 64%;
+                width: 94%;
 
                 .modal-content {
                     padding: 50px 30px;
@@ -2522,7 +2539,12 @@ export default {
                         margin-top: 50px;
                         display: flex;
                         justify-content: center;
-                        gap: 50px;
+                        gap: 20px;
+
+                        button {
+                            width: 50%;
+                            padding: 10px 10px;
+                        }
 
                         .btn-close {
                             background-color: #b8b9e0;

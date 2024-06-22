@@ -181,7 +181,6 @@ export default {
                         const newresponse = await getUserInfo(this.$route.query.userID);
                         this.updateUser(newresponse.userInfo);
                         this.state.user = newresponse.userInfo;
-                        alert('Данные изменены');
 
                         this.state[editingState] = false;
 
@@ -240,7 +239,6 @@ export default {
             );
 
             if(response.type === 0) {
-                alert('Фильм предложен');
                 this.tickets = await this.getSuggestion();
             } else {
                 alert('Фильм не предложен');
@@ -397,6 +395,238 @@ export default {
 
                         &:hover {
                             background-color: #d6d8ec;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    .section-container {
+        margin-top: 0px;
+        margin-left: 50px;
+
+        h1, h2 {
+            color: $greyTextColor;
+        }
+
+        h1 {
+            margin-left: -2px;
+            margin-top: 40px;
+            font-size: 48px;
+            line-height: 0;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-weight: $SemiBoldWeight;
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            .wrapper {
+                width: 100%;
+                .container__profile {
+                    h2 {
+                        color: $greyTextColor;
+                    }
+                    .profile {
+                        margin-top: 50px;
+                        .data-container {
+                            display: flex;
+                            align-items: center;
+                            gap: 20px;
+
+                            .data-name, .data-input {
+                                font-size: 14px;
+                                color: $greyTextColor;
+                                border: 1px solid $greyTextColor;
+                                border-radius: 5px;
+                                outline: none;
+                                background: transparent;
+                                padding: 15px 15px;
+                                min-width: 50%;
+                                max-width: 80%;
+                                line-height: 0;
+                            }
+
+                            .data-input {
+                                padding: 19px 15px;
+                            }
+
+                            .btn__edit {
+                                background-color: #b8b9e0;
+                                color: #0a0a0a;
+                                border: none;
+                                height: 40px;
+                                width: 20%;
+                                text-align: center;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                transition: .4s;
+                                font-size: 16px;
+                                font-weight: $MediumWeight;
+
+                                &:hover {
+                                    background-color: #d6d8ec;
+                                }
+                            }
+
+                            .btn-primary {
+                                height: 40px;
+                                width: 12%;
+                                padding: 0;
+                            }
+                        }
+
+                        .invalid__data {
+                            color: #d34339;
+                            font-size: 16px;
+                            margin-bottom: 25px;
+                        }
+
+                        .btn-suggested {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: 80px;
+                            background-color: #b8b9e0;
+                            color: #0a0a0a;
+                            border: none;
+                            width: 270px;
+                            height: 180px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            transition: .4s;
+                            font-size: 16px;
+                            font-weight: $MediumWeight;
+
+                            &:hover {
+                                background-color: #d6d8ec;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .section-container {
+        margin-top: 0px;
+        margin-left: 0px;
+
+        h1, h2 {
+            color: $greyTextColor;
+        }
+
+        h1 {
+            margin-left: -2px;
+            margin-top: 40px;
+            font-size: 35px;
+            line-height: 1;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-weight: $SemiBoldWeight;
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            .wrapper {
+                width: 100%;
+                .container__profile {
+                    h2 {
+                        color: $greyTextColor;
+                    }
+                    .profile {
+                        margin-top: 50px;
+                        .data-container {
+                            display: flex;
+                            align-items: flex-start;
+                            flex-direction: column;
+                            gap: 20px;
+
+                            .data-name, .data-input {
+                                font-size: 14px;
+                                color: $greyTextColor;
+                                border: 1px solid $greyTextColor;
+                                border-radius: 5px;
+                                outline: none;
+                                background: transparent;
+                                padding: 15px 15px;
+                                min-width: 50%;
+                                max-width: 80%;
+                                line-height: 0;
+                            }
+
+                            .data-input {
+                                padding: 19px 15px;
+                            }
+
+                            .btn__edit {
+                                background-color: #b8b9e0;
+                                color: #0a0a0a;
+                                border: none;
+                                height: 40px;
+                                width: 30%;
+                                text-align: center;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                transition: .4s;
+                                font-size: 16px;
+                                font-weight: $MediumWeight;
+
+                                &:hover {
+                                    background-color: #d6d8ec;
+                                }
+                            }
+
+                            .btn-primary {
+                                height: 40px;
+                                width: 30%;
+                                padding: 0;
+                            }
+                        }
+
+                        .invalid__data {
+                            color: #d34339;
+                            font-size: 16px;
+                            margin-bottom: 25px;
+                        }
+
+                        .btn-suggested {
+                            display: flex;
+                            justify-content: center;
+                            text-align: center;
+                            align-items: center;
+                            margin-top: 50px;
+                            background-color: #b8b9e0;
+                            color: #0a0a0a;
+                            border: none;
+                            width: 160px;
+                            height: 80px;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            transition: .4s;
+                            font-size: 16px;
+                            font-weight: $MediumWeight;
+
+                            &:hover {
+                                background-color: #d6d8ec;
+                            }
                         }
                     }
                 }

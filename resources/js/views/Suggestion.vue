@@ -285,4 +285,289 @@ export default {
         }
     }
 }
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    .section-container {
+        margin-left: 50px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+        h1, h2 {
+            color: $greyTextColor;
+        }
+
+        h1 {
+            margin-left: -2px;
+            margin-top: 40px;
+            font-size: 48px;
+            line-height: 0;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-weight: $SemiBoldWeight;
+            font-size: 18px;
+        }
+
+        .data-input {
+            margin-top: 10px;
+            font-size: 16px;
+            color: $greyTextColor;
+            border: 1px solid $greyTextColor;
+            border-radius: 5px;
+            outline: none;
+            background: transparent;
+            padding: 15px 15px;
+            min-width: 30%;
+            max-width: 60%;
+            line-height: 0;
+        }
+
+        .data-select {
+            margin-top: 10px;
+            color: $greyTextColor;
+            background: transparent;
+            padding: 15px 15px;
+            border-radius: 5px;
+            border: 1px solid $greyTextColor;
+        }
+
+        .buttons {
+            padding: 30px 0 20px 0;
+            width: 30%;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            .wrapper {
+                width: 100%;
+                .container__profile {
+                    h2 {
+                        color: $greyTextColor;
+                        line-height: 0;
+                    }
+                    .profile {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                        margin-top: 50px;
+
+                        .admin-container {
+                            width: 100%;
+                            border-radius: 5px;
+                            background-color: $extraColor;
+                            color: $greyTextColor;
+                            z-index: 1000;
+                            transition: .2s;
+                            .ticket-data {
+                                .title {
+                                    background-color: #052731;
+                                    padding: 5px 10px;
+                                    font-size: 16px;
+                                }
+
+                                .data-container {
+                                    display: flex;
+                                    flex-direction: column;
+                                    padding: 20px 20px;
+
+                                    .data {
+
+                                        h2 {
+                                            padding-bottom: 10px;
+                                            margin-top: 20px;
+                                        }
+
+                                        p {
+                                            line-height: 0;
+                                            color: $greyTextColor;
+                                            font-weight: $RegularWeight;
+                                            font-size: 16px;
+                                            margin-bottom: 20px;
+
+                                            a {
+                                                text-decoration: underline;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .data-select {
+                            width: 30%;
+                            color: $greyTextColor;
+                            background: transparent;
+                            padding: 15px 15px;
+                            border-radius: 5px;
+                            border: 1px solid $greyTextColor;
+                        }
+
+                        .buttons {
+                            padding: 30px 0 20px 0;
+
+                            .btn-primary {
+                                width: 80%;
+                                border: none;
+                                text-align: center;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                transition: .4s;
+                                font-size: 16px;
+                                font-weight: $MediumWeight;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .section-container {
+        margin-left: 0px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+
+        h1, h2 {
+            color: $greyTextColor;
+        }
+
+        h1 {
+            margin-left: -2px;
+            margin-top: 40px;
+            font-size: 35px;
+            line-height: 1;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-weight: $SemiBoldWeight;
+            font-size: 18px;
+        }
+
+        .data-input {
+            margin-top: 10px;
+            font-size: 16px;
+            color: $greyTextColor;
+            border: 1px solid $greyTextColor;
+            border-radius: 5px;
+            outline: none;
+            background: transparent;
+            padding: 15px 15px;
+            min-width: 30%;
+            max-width: 60%;
+            line-height: 0;
+        }
+
+        .data-select {
+            margin-top: 10px;
+            color: $greyTextColor;
+            background: transparent;
+            padding: 15px 15px;
+            border-radius: 5px;
+            border: 1px solid $greyTextColor;
+        }
+
+        .buttons {
+            padding: 30px 0 20px 0;
+            width: 30%;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            .wrapper {
+                width: 100%;
+                .container__profile {
+                    h2 {
+                        color: $greyTextColor;
+                        line-height: 0;
+                    }
+                    .profile {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 20px;
+                        margin-top: 50px;
+
+                        .admin-container {
+                            width: 100%;
+                            border-radius: 5px;
+                            background-color: $extraColor;
+                            color: $greyTextColor;
+                            z-index: 1000;
+                            transition: .2s;
+                            .ticket-data {
+                                .title {
+                                    background-color: #052731;
+                                    padding: 5px 10px;
+                                    font-size: 16px;
+                                }
+
+                                .data-container {
+                                    display: flex;
+                                    flex-direction: column;
+                                    padding: 20px 20px;
+
+                                    .data {
+
+                                        h2 {
+                                            padding-bottom: 10px;
+                                            margin-top: 20px;
+                                        }
+
+                                        p {
+                                            line-height: 0;
+                                            color: $greyTextColor;
+                                            font-weight: $RegularWeight;
+                                            font-size: 16px;
+                                            margin-bottom: 20px;
+
+                                            a {
+                                                text-decoration: underline;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .data-select {
+                            width: 50%;
+                            color: $greyTextColor;
+                            background: transparent;
+                            padding: 15px 15px;
+                            border-radius: 5px;
+                            border: 1px solid $greyTextColor;
+                        }
+
+                        .buttons {
+                            padding: 30px 0 20px 0;
+
+                            .btn-primary {
+                                width: 120%;
+                                border: none;
+                                text-align: center;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                transition: .4s;
+                                font-size: 16px;
+                                font-weight: $MediumWeight;
+                                padding: 10px 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 </style>

@@ -256,13 +256,6 @@ class UsersController extends Controller
             $userShortDescription = $request['userShortDescription'] ?? null;
             $userSeriesLength = $request['userSeriesLength'] ?? null;
             $userSlogan = $request['userSlogan'] ?? null;
-            /*$userBackdrop = $request['userBackdrop'] ?? null;
-            $userPoster = $request['userPoster'] ?? null;
-            $userTrailer = $request['userTrailer'] ?? null;
-            $userYearRus = $request['userYearRus'] ?? null;
-            $userYearWorld = $request['userYearWorld'] ?? null;
-            $userYearSerialStart = $request['userYearSerialStart'] ?? null;
-            $userYearSerialEnd = $request['userYearSerialEnd'] ?? null;*/
             $userID = $request['userID'] ?? null;
 
             $typeID = null;

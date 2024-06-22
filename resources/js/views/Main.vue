@@ -103,7 +103,7 @@ export default {
             align-items: flex-start;
 
             .wrapper {
-                width: 45%;
+                width: 75%;
                 margin-left: 0px;
 
                 h1 {
@@ -144,6 +144,7 @@ export default {
             }
 
             img {
+                display: none;
                 width: 70%;
                 margin-top: 50px;
                 margin-right: -175px;

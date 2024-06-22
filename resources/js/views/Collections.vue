@@ -31,7 +31,10 @@
 
                     <div class="span-container">
                         <span class="collection-name">{{ collectionData.collection.name }}</span>
-                        <button class="delete-button" @click.stop="deleteCollection(collectionData.collection.id)">Удалить</button>
+                        <div>
+                            <button class="delete-button" @click.stop="deleteCollection(collectionData.collection.id)">Удалить</button>
+                            <img src="../assets/images/edit.svg" class="edit"/>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,11 +77,11 @@ export default {
             this.collectionDescription = data.description;
 
             const response = addCollection(this.$route.query.userID, this.collectionName, this.collectionDescription);
-            const fullResponse = response.then(result => {
+            /*const fullResponse = response.then(result => {
                 if (result.status) {
                     alert(result.message);
                 }
-            });
+            });*/
 
             this.collections = await this.getCollection();
 
@@ -178,9 +181,9 @@ export default {
 
     h1 {
         margin-left: -2px;
-        margin-top: 40px;
+        margin-top: 0;
+        margin-bottom: -40px;
         font-size: 48px;
-        line-height: 0;
     }
 
     h2 {
@@ -259,6 +262,12 @@ export default {
                     color: $greyTextColor;
                 }
 
+                div {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                }
+
                 .delete-button {
                     margin-top: 20px;
                     display: none;
@@ -278,6 +287,12 @@ export default {
                         background-color: #d6d8ec;
                     }
                 }
+
+                .edit {
+                    display: none;
+                    width: 25px;
+                    height: 25px;
+                }
             }
 
             &:hover {
@@ -287,6 +302,10 @@ export default {
                 .delete-button {
                     display: block;
                     margin-bottom: 20px;
+                }
+
+                .edit {
+                    display: block;
                 }
             }
         }
@@ -306,7 +325,6 @@ export default {
             margin-left: -2px;
             margin-top: 40px;
             font-size: 48px;
-            line-height: 0;
         }
 
         h2 {
@@ -404,6 +422,12 @@ export default {
                             background-color: #d6d8ec;
                         }
                     }
+
+                    .edit {
+                        display: none;
+                        width: 16px;
+                        height: 16px;
+                    }
                 }
 
                 &:hover {
@@ -413,6 +437,10 @@ export default {
                     .delete-button {
                         display: block;
                         margin-bottom: 20px;
+                    }
+
+                    .edit {
+                        display: block;
                     }
                 }
             }
@@ -434,7 +462,6 @@ export default {
             margin-left: -2px;
             margin-top: 40px;
             font-size: 35px;
-            line-height: 0;
         }
 
         h2 {

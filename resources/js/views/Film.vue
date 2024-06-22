@@ -153,9 +153,9 @@ export default {
             this.selectedCollection = collection;
             try {
                 const response = await addMovieToCollection(this.$route.query.userID, this.$route.query.id, this.selectedCollection);
-                if(response.status) {
+                /*if(response.status) {
                     alert(response.message);
-                }
+                }*/
             } catch (error) {
                 console.error('Ошибка при добавлении фильма в подборку:', error);
             }
@@ -293,6 +293,7 @@ export default {
                             padding: 25px;
                             border-radius: 5px;
                             font-weight: $MediumWeight;
+                            width: 200px;
 
                             .rating {
                                 color: #ff0b60;
@@ -358,9 +359,9 @@ export default {
                                         flex-direction: column;
                                         padding: 5px;
                                         gap: 5px;
-                                        height: 200px;
+                                        height: 100%;
                                         overflow-y: auto;
-                                        width: 600px;
+                                        width: 500px;
 
                                         .collection-data {
                                             cursor: pointer;
@@ -433,6 +434,557 @@ export default {
                             font-size: 14px;
                             font-weight: $BoldWeight;
                             cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    .section-container {
+        margin-left: 50px;
+
+        h1, h2 {
+            color: $greyTextColor;
+        }
+
+        h1 {
+            margin-left: -2px;
+            margin-top: 40px;
+            font-size: 48px;
+            line-height: 1;
+        }
+
+        h2 {
+            margin-top: 80px;
+            font-weight: $SemiBoldWeight;
+            font-size: 18px;
+        }
+
+        .films-container {
+            min-height: 100%;
+
+            .films-image {
+                background-color: $purple;
+                background-size: cover;
+                background-position: center;
+                margin-left: -55px;
+                margin-right: -55px;
+                margin-top: -20px;
+
+                transition: .3s;
+
+                height: 720px;
+                min-height: 100%;
+
+                position: relative;
+
+                .film-image-background {
+                    position: absolute;
+                    width: 100%;
+                    background: linear-gradient(to right, #000000CB 25%, #00000000);
+                    height: 100%;
+
+                    .breadcrumbs {
+                        margin-top: 30px;
+                        margin-left: 55px;
+                    }
+
+                    .film {
+                        position: absolute;
+                        top: 5%;
+                        margin-top: 5%;
+                        margin-left: 55px;
+                        width: 60%;
+                        height: 100%;
+
+                        .film-name {
+                            margin-top: 50px;
+                            color: #ff0b60;
+                        }
+
+                        .film-logo {
+                            margin-top: 0px;
+                            margin-bottom: -50px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 500px;
+                            height: 200px;
+                            overflow: hidden;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                            }
+                        }
+
+                        .film-description {
+                            position: absolute;
+                            top: 23%;
+                            margin-top: 20px;
+                            color: $whiteColor;
+                            font-weight: $RegularWeight;
+                            font-size: 16px;
+                        }
+
+                        .film-data {
+                            position: absolute;
+                            top: 38%;
+                            display: flex;
+                            color: $whiteColor;
+                            font-size: 14px;
+                            gap: 10px;
+
+                            .genres {
+                                display: flex;
+                                gap: 2px;
+                            }
+                        }
+
+                        .rating-container {
+                            position: absolute;
+                            top: 40%;
+                            color: $whiteColor;
+                            display: flex;
+                            align-items: flex-end;
+                            margin-top: 30px;
+                            gap: 20px;
+                            transition: .2s;
+                            z-index: 0;
+
+                            .rating-moviq, .rating-kp {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: flex-end;
+                                background-color: #181232;
+                                padding: 25px;
+                                border-radius: 5px;
+                                font-weight: $MediumWeight;
+
+                                .rating {
+                                    color: #ff0b60;
+                                    font-weight: $BoldWeight;
+                                    font-size: 75px;
+                                }
+
+                                .not-rating {
+                                    margin-bottom: 40px;
+                                    font-size: 14px;
+                                    font-weight: $RegularWeight;
+                                }
+                            }
+
+                            .collection-container {
+                                position: relative;
+                                display: inline-flex;
+                                background-color: #181232;
+                                padding: 11px;
+                                transition: .2s;
+                                z-index: 0;
+
+                                img {
+                                    width: 35px;
+                                }
+
+                                &:hover {
+                                    cursor: pointer;
+                                    transform: scale(1.1);
+                                    border-radius: 5px 0 0 5px;
+                                }
+
+                                .text-block-container {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 100%;
+                                    display: none;
+                                    background-color: #181232;
+                                    padding: 2px 10px;
+                                    font-size: 12px;
+                                    font-weight: $MediumWeight;
+                                    border-radius: 0 5px 5px 0;
+
+                                    .text-block {
+                                        display: flex;
+                                        gap: 25px;
+                                        line-height: 1.2;
+
+                                        .arrow-icon {
+                                            width: 15px;
+                                        }
+                                    }
+
+                                    .list-block {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 100%;
+                                        display: none;
+                                        background-color: #181232;
+
+                                        .collections {
+                                            display: flex;
+                                            flex-direction: column;
+                                            padding: 5px;
+                                            gap: 5px;
+                                            height: 200px;
+                                            overflow-y: auto;
+                                            width: 600px;
+
+                                            .collection-data {
+                                                cursor: pointer;
+                                                display: flex;
+                                                align-items: center;
+                                                background-color: #2b225b;
+                                                padding: 8px 10px;
+                                                border-radius: 2px;
+
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                max-width: 100%;
+                                            }
+                                        }
+                                    }
+
+                                    &:hover {
+                                        display: flex;
+                                        border-radius: 0 0 0 0;
+
+                                        .list-block {
+                                            display: block;
+                                        }
+                                    }
+                                }
+
+                                &:hover .text-block-container {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        .rating-btn-container {
+                            position: absolute;
+                            top: 75%;
+                            left: 0;
+                            display: inline-block;
+                            margin-top: 20px;
+                            background-color: #b8b9e0;
+                            border-radius: 50px;
+                            padding: 12px 20px;
+                            cursor: pointer;
+                            z-index: 0;
+                            transition: .3s;
+
+                            .rating-btn {
+                                font-size: 14px;
+                                font-weight: $SemiBoldWeight;
+                                transition: .3s;
+                            }
+
+                            &:hover {
+                                background-color: #cccde5;
+                                transform: scale(1.1);
+                            }
+                        }
+
+                        .add-rating-container {
+                            position: absolute;
+                            top: 75%;
+                            display: flex;
+                            gap: 20px;
+                            margin-top: 20px;
+                            margin-left: 10px;
+                            background-color: #cccde5;
+                            border-radius: 50px;
+                            padding: 12px 48px;
+                            z-index: 0;
+                            transition: .3s;
+                            transform: scale(1.1);
+
+                            .add-rating {
+                                font-size: 14px;
+                                font-weight: $BoldWeight;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .section-container {
+        margin-left: 0px;
+
+        h1, h2 {
+            color: $greyTextColor;
+        }
+
+        h1 {
+            margin-left: -2px;
+            margin-top: 40px;
+            font-size: 48px;
+            line-height: 1;
+        }
+
+        h2 {
+            margin-top: 80px;
+            font-weight: $SemiBoldWeight;
+            font-size: 18px;
+        }
+
+        .films-container {
+            min-height: 100%;
+
+            .films-image {
+                background-color: $purple;
+                background-size: cover;
+                background-position: center;
+                margin-left: -55px;
+                margin-right: -30px;
+                margin-top: -20px;
+
+                transition: .3s;
+
+                height: 800px;
+                min-height: 100%;
+
+                position: relative;
+
+                .film-image-background {
+                    position: absolute;
+                    width: 100%;
+                    background: linear-gradient(to right, #000000CB 25%, #00000000);
+                    height: 100%;
+
+                    .breadcrumbs {
+                        margin-top: 30px;
+                        margin-left: 55px;
+                    }
+
+                    .film {
+                        position: absolute;
+                        top: 5%;
+                        margin-top: 5%;
+                        margin-left: 55px;
+                        width: 60%;
+                        height: 100%;
+
+                        .film-name {
+                            margin-top: 50px;
+                            color: #ff0b60;
+                        }
+
+                        .film-logo {
+                            margin-top: 20px;
+                            margin-bottom: -50px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 300px;
+                            height: 150px;
+                            overflow: hidden;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                            }
+                        }
+
+                        .film-description {
+                            position: absolute;
+                            top: 23%;
+                            margin-top: 20px;
+                            color: $whiteColor;
+                            font-weight: $RegularWeight;
+                            font-size: 16px;
+                        }
+
+                        .film-data {
+                            position: absolute;
+                            top: 40%;
+                            display: flex;
+                            color: $whiteColor;
+                            font-size: 14px;
+                            gap: 10px;
+
+                            .genres {
+                                display: flex;
+                                gap: 2px;
+                            }
+                        }
+
+                        .rating-container {
+                            position: absolute;
+                            top: 40%;
+                            color: $whiteColor;
+                            display: flex;
+                            align-items: flex-end;
+                            margin-top: 30px;
+                            gap: 20px;
+                            transition: .2s;
+                            z-index: 0;
+
+                            .rating-moviq, .rating-kp {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                justify-content: flex-end;
+                                background-color: #181232;
+                                padding: 25px;
+                                border-radius: 5px;
+                                font-weight: $MediumWeight;
+
+                                .rating {
+                                    color: #ff0b60;
+                                    font-weight: $BoldWeight;
+                                    font-size: 75px;
+                                }
+
+                                .not-rating {
+                                    margin-bottom: 40px;
+                                    font-size: 14px;
+                                    font-weight: $RegularWeight;
+                                }
+                            }
+
+                            .collection-container {
+                                position: absolute;
+                                top: 120%;
+                                display: inline-flex;
+                                background-color: #181232;
+                                padding: 11px;
+                                transition: .2s;
+                                z-index: 0;
+
+                                img {
+                                    width: 35px;
+                                }
+
+                                &:hover {
+                                    cursor: pointer;
+                                    transform: scale(1.1);
+                                    border-radius: 5px 0 0 5px;
+                                }
+
+                                .text-block-container {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 100%;
+                                    display: none;
+                                    background-color: #181232;
+                                    padding: 2px 10px;
+                                    font-size: 12px;
+                                    font-weight: $MediumWeight;
+                                    border-radius: 0 5px 5px 0;
+
+                                    .text-block {
+                                        display: flex;
+                                        gap: 25px;
+                                        line-height: 1.2;
+
+                                        .arrow-icon {
+                                            width: 15px;
+                                        }
+                                    }
+
+                                    .list-block {
+                                        position: absolute;
+                                        top: 0;
+                                        left: 100%;
+                                        display: none;
+                                        background-color: #181232;
+
+                                        .collections {
+                                            display: flex;
+                                            flex-direction: column;
+                                            padding: 5px;
+                                            gap: 5px;
+                                            height: 100%;
+                                            overflow-y: auto;
+                                            width: 130px;
+
+                                            .collection-data {
+                                                cursor: pointer;
+                                                display: flex;
+                                                align-items: center;
+                                                background-color: #2b225b;
+                                                padding: 8px 10px;
+                                                border-radius: 2px;
+
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                max-width: 100%;
+                                            }
+                                        }
+                                    }
+
+                                    &:hover {
+                                        display: flex;
+                                        border-radius: 0 0 0 0;
+
+                                        .list-block {
+                                            display: block;
+                                        }
+                                    }
+                                }
+
+                                &:hover .text-block-container {
+                                    display: block;
+                                }
+                            }
+                        }
+
+                        .rating-btn-container {
+                            position: absolute;
+                            top: 82%;
+                            left: 0;
+                            display: inline-block;
+                            margin-top: 20px;
+                            background-color: #b8b9e0;
+                            border-radius: 50px;
+                            padding: 12px 20px;
+                            cursor: pointer;
+                            z-index: 0;
+                            transition: .3s;
+
+                            .rating-btn {
+                                font-size: 14px;
+                                font-weight: $SemiBoldWeight;
+                                transition: .3s;
+                            }
+
+                            &:hover {
+                                background-color: #cccde5;
+                                transform: scale(1.1);
+                            }
+                        }
+
+                        .add-rating-container {
+                            position: absolute;
+                            top: 82%;
+                            display: flex;
+                            gap: 15px;
+                            margin-top: 20px;
+                            margin-left: 10px;
+                            background-color: #cccde5;
+                            border-radius: 50px;
+                            padding: 12px 48px;
+                            z-index: 0;
+                            transition: .3s;
+                            transform: scale(1.1);
+
+                            .add-rating {
+                                font-size: 14px;
+                                font-weight: $BoldWeight;
+                                cursor: pointer;
+                            }
                         }
                     }
                 }

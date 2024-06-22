@@ -306,7 +306,7 @@ export default {
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
     .section-container {
-        margin-top: -400px;
+        margin-top: 0px;
         margin-left: 50px;
 
         h1, h2 {
@@ -335,7 +335,7 @@ export default {
                 background-color: #052731;
                 border-radius: 5px;
                 width: 300px;
-                height: 200px;
+                height: 220px;
                 cursor: pointer;
 
                 display: flex;
@@ -487,6 +487,7 @@ export default {
 
                     background-size: cover;
                     background-position: center;
+                    background-repeat: no-repeat;
 
                     display: flex;
                     justify-content: center;

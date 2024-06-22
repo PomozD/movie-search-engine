@@ -98,10 +98,10 @@
                                     </p>
                                     <div class="film-data">
                                         <div class="genres">
-                                        <span v-for="(genre, index) in movie.genres" :key="genre.id">
-                                            {{genre.name}}
-                                            <span v-if="index !== movie.genres.length - 1">,</span>
-                                        </span>
+                                            <span v-for="(genre, index) in movie.genres" :key="genre.id">
+                                                {{genre.name}}
+                                                <span v-if="index !== movie.genres.length - 1">,</span>
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="countries">
@@ -235,9 +235,9 @@ export default {
         async addMovie(movieID) {
             const response = await addMovieToCollection(this.$route.query.userID, this.$route.query.id, movieID);
             this.$emit('close', false);
-            if (response.status) {
+            /*if (response.status) {
                 alert(response.message);
-            }
+            }*/
             console.log(response);
             return response;
         }
@@ -626,6 +626,748 @@ export default {
         list-style-type: none; /* Убираем точки */
         padding: 0;
         margin: 0;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+
+        .modal-container {
+            position: relative;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            color: $greyTextColor;
+            border: 1px solid $greyTextColor;
+            border-radius: 5px;
+            outline: none;
+            background-color: $mainColor2;
+            padding: 6px 12px;
+            font-weight: $MediumWeight;
+            gap: 15px;
+            transition: .2s;
+            width: 80%;
+            overflow-y: auto;
+            height: 500px;
+
+            h1 {
+                margin-left: -2px;
+                margin-top: 40px;
+                font-size: 23px;
+                line-height: 0;
+                color: $whiteColor;
+            }
+
+            h2 {
+                color: $whiteColor;
+                margin-top: 0px;
+                font-size: 23px;
+                text-align: center;
+            }
+
+            .close {
+                position: absolute;
+                top: -5px;
+                right: 15px;
+                cursor: pointer;
+                font-size: 55px;
+            }
+
+            .modal-content {
+                padding: 30px 0px;
+                width: 95%;
+                height: 500px;
+
+                h2 {
+                    margin-top: 20px;
+                }
+
+                .filters-container {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .filters {
+                        display: flex;
+                        gap: 10px;
+                        position: relative;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        width: 100%;
+
+                        .filter-genres, .filter-countries, .filter-years, .filter-ratings {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            font-size: 16px;
+                            color: $greyTextColor;
+                            border: 1px solid $greyTextColor;
+                            border-radius: 5px;
+                            outline: none;
+                            background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                            padding: 6px 12px;
+                            font-weight: $MediumWeight;
+                            cursor: pointer;
+                            gap: 15px;
+                            transition: .2s;
+                            width: 18%;
+
+                            img {
+                                margin-top: 3px;
+                                width: 20px;
+                            }
+
+                            .dropdown {
+                                display: none;
+                                position: absolute;
+                                top: 100%;
+                                left: 0;
+                                width: 100%;
+                                margin-top: 10px;
+                                border-radius: 5px;
+                                background-color: $extraColor;
+                                z-index: 1000;
+                                transition: .2s;
+                                max-height: 300px;
+                                overflow-y: auto;
+
+                                .filter-title {
+                                    background-color: #052731;
+                                    padding: 5px 10px;
+                                }
+
+                                .filter-container {
+                                    padding: 5px;
+                                    ul {
+                                        list-style-type: none;
+                                        line-height: 0;
+                                        padding: 0;
+                                        margin: 0;
+                                        column-gap: 20px;
+
+                                        li {
+                                            display: inline-flex;
+                                            align-items: center;
+                                            gap: 10px;
+                                            padding: 10px 6px;
+
+
+                                            input[type="checkbox"] {
+                                                accent-color: #094554;
+                                            }
+
+                                            .input__rating {
+                                                font-size: 16px;
+                                                color: $greyTextColor;
+                                                border: 2px solid $greyTextColor;
+                                                border-radius: 5px;
+                                                outline: none;
+                                                background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                                                padding: 10px;
+                                            }
+
+                                        }
+                                    }
+
+                                    .genre-columns {
+                                        columns: 3;
+                                    }
+
+                                    .year-columns {
+                                        columns: 5;
+                                    }
+
+                                    .countrie-columns {
+                                        columns: 3;
+                                        column-gap: 40px;
+                                    }
+
+                                    .rating-columns {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        gap: 20px;
+
+                                        .span__minus {
+                                            font-size: 40px;
+                                        }
+
+                                        .ratingfrom, .ratingto {
+                                            .input__rating {
+                                                width: 100%;
+                                                background-color: $extraColor;
+                                                color: $greyTextColor;
+                                                padding: 5px 10px;
+                                                border: 1px solid $greyTextColor;
+                                                border-radius: 5px;
+                                                outline: none;
+                                                overflow-y: auto;
+
+                                                option {
+                                                    font-size: 13px;
+                                                    padding: 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            &:hover::after {
+                                content: "";
+                                position: absolute;
+                                top: 100%;
+                                left: 0;
+                                width: 100%;
+                                height: 10px; /* Высота отступа */
+                            }
+
+                            &:hover {
+                                background-color: $mainColor3;
+                                .dropdown {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+
+                    .filter-search {
+                        display: flex;
+                        gap: 10px;
+
+                        .input__search {
+                            font-size: 16px;
+                            color: $greyTextColor;
+                            border: 1px solid $greyTextColor;
+                            font-weight: $SemiBoldWeight;
+                            border-radius: 5px;
+                            outline: none;
+                            background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                            padding: 8px 12px;
+                        }
+
+                        .btn__search {
+                            background-color: $greyTextExtraColor;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-weight: $MediumWeight;
+                            padding: 5px 10px;
+                        }
+                    }
+
+                }
+
+                .p__title {
+                    margin-top: 30px;
+                    font-size: 16px;
+                    color: $greyTextColor;
+                    transition: .5s;
+                    line-height: 0.7;
+                }
+
+                .input__name {
+                    font-size: 14px;
+                    color: $greyTextColor;
+                    border: 1px solid $greyTextColor;
+                    border-radius: 5px;
+                    outline: none;
+                    background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                    padding: 14px;
+                    min-width: 90%;
+                }
+
+                .modal-form {
+                    display: flex;
+                    flex-direction: column;
+
+                    ul {
+                        margin-top: 10px;
+                        list-style: none;
+                        padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        gap: 30px;
+
+                        li {
+                            margin-top: 20px;
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            width: 100%;
+
+                            .movie__container {
+                                display: flex;
+                                .movie-backdrop {
+                                    width: 120px;
+                                    height: 120px;
+
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        border-radius: 5px;
+                                    }
+                                }
+
+                                .movie__data {
+                                    padding: 0 20px;
+                                    p {
+                                        margin-top: 0px;
+                                        font-size: 16px;
+                                        color: $whiteColor;
+                                        line-height: 1;
+
+                                        a {
+                                            font-size: 18px;
+                                        }
+                                    }
+
+                                    .film-data {
+                                        display: flex;
+
+                                        .genres {
+                                            display: flex;
+                                            flex-direction: row;
+                                            flex-wrap: wrap;
+                                        }
+                                    }
+
+                                    .countries {
+                                        margin-top: 5px;
+                                    }
+                                }
+                            }
+
+                            .movie__add {
+                                margin-top: 20px;
+                                margin-right: 0px;
+                                margin-left: 0px;
+                                background-color: #b8b9e0;
+                                color: #0a0a0a;
+                                border: none;
+                                width: 40%;
+                                height: 40px;
+                                text-align: center;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                transition: .4s;
+                                font-size: 16px;
+                                font-weight: $MediumWeight;
+
+                                &:hover {
+                                    background-color: #d6d8ec;
+                                }
+                            }
+                        }
+                    }
+
+                    .navigation {
+                        display: flex;
+                        justify-content: center;
+                        gap: 30px;
+                        margin-top: 30px;
+                        margin-bottom: 50px;
+
+                        .navigation-btn {
+                            width: 50%;
+                            padding: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .filters-container ul {
+            list-style-type: none; /* Убираем точки */
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+
+        .modal-container {
+            position: relative;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            color: $greyTextColor;
+            border: 1px solid $greyTextColor;
+            border-radius: 5px;
+            outline: none;
+            background-color: $mainColor2;
+            padding: 6px 12px;
+            font-weight: $MediumWeight;
+            gap: 15px;
+            transition: .2s;
+            width: 80%;
+            overflow-y: auto;
+            height: 500px;
+
+            h1 {
+                margin-left: -2px;
+                margin-top: 40px;
+                font-size: 23px;
+                line-height: 0;
+                color: $whiteColor;
+            }
+
+            h2 {
+                color: $whiteColor;
+                margin-top: 0px;
+                font-size: 23px;
+                text-align: center;
+            }
+
+            .close {
+                position: absolute;
+                top: -5px;
+                right: 15px;
+                cursor: pointer;
+                font-size: 55px;
+            }
+
+            .modal-content {
+                padding: 30px 0px;
+                width: 95%;
+                height: 500px;
+
+                h2 {
+                    margin-top: 20px;
+                }
+
+                .filters-container {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+
+                    .filters {
+                        display: flex;
+                        gap: 20px;
+                        position: relative;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+
+                        .filter-genres, .filter-countries, .filter-years, .filter-ratings {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            font-size: 16px;
+                            color: $greyTextColor;
+                            border: 1px solid $greyTextColor;
+                            border-radius: 5px;
+                            outline: none;
+                            background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                            padding: 6px 12px;
+                            font-weight: $MediumWeight;
+                            cursor: pointer;
+                            gap: 15px;
+                            transition: .2s;
+                            width: 100%;
+                            position: relative;
+
+                            img {
+                                margin-top: 3px;
+                                width: 20px;
+                            }
+
+                            .dropdown {
+                                display: none;
+                                position: absolute;
+                                top: 100%;
+                                left: 0;
+                                width: 100%;
+                                margin-top: 10px;
+                                border-radius: 5px;
+                                background-color: $extraColor;
+                                z-index: 1000;
+                                transition: .2s;
+                                max-height: 300px;
+                                overflow-y: auto;
+
+                                .filter-title {
+                                    background-color: #052731;
+                                    padding: 5px 10px;
+                                }
+
+                                .filter-container {
+                                    padding: 5px;
+                                    ul {
+                                        list-style-type: none;
+                                        line-height: 0;
+                                        padding: 0;
+                                        margin: 0;
+                                        column-gap: 20px;
+
+                                        li {
+                                            display: inline-flex;
+                                            align-items: center;
+                                            gap: 10px;
+                                            padding: 10px 0px;
+
+
+                                            input[type="checkbox"] {
+                                                accent-color: #094554;
+                                            }
+
+                                            .input__rating {
+                                                font-size: 16px;
+                                                color: $greyTextColor;
+                                                border: 2px solid $greyTextColor;
+                                                border-radius: 5px;
+                                                outline: none;
+                                                background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                                                padding: 10px;
+                                            }
+
+                                        }
+                                    }
+
+                                    .genre-columns {
+                                        columns: 2;
+                                    }
+
+                                    .year-columns {
+                                        columns: 3;
+                                    }
+
+                                    .countrie-columns {
+                                        columns: 2;
+                                        column-gap: 30px;
+                                    }
+
+                                    .rating-columns {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        gap: 20px;
+
+                                        .span__minus {
+                                            font-size: 40px;
+                                        }
+
+                                        .ratingfrom, .ratingto {
+                                            .input__rating {
+                                                width: 100%;
+                                                background-color: $extraColor;
+                                                color: $greyTextColor;
+                                                padding: 5px 10px;
+                                                border: 1px solid $greyTextColor;
+                                                border-radius: 5px;
+                                                outline: none;
+                                                overflow-y: auto;
+
+                                                option {
+                                                    font-size: 13px;
+                                                    padding: 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            &:hover::after {
+                                content: "";
+                                position: absolute;
+                                top: 100%;
+                                left: 0;
+                                width: 100%;
+                                height: 10px; /* Высота отступа */
+                            }
+
+                            &:hover {
+                                background-color: $mainColor3;
+                                .dropdown {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+
+                    .filter-search {
+                        display: flex;
+                        gap: 10px;
+
+                        .input__search {
+                            font-size: 16px;
+                            color: $greyTextColor;
+                            border: 1px solid $greyTextColor;
+                            font-weight: $SemiBoldWeight;
+                            border-radius: 5px;
+                            outline: none;
+                            background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                            padding: 8px 12px;
+                        }
+
+                        .btn__search {
+                            background-color: $greyTextExtraColor;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-weight: $MediumWeight;
+                            padding: 5px 10px;
+                        }
+                    }
+
+                }
+
+                .p__title {
+                    margin-top: 30px;
+                    font-size: 16px;
+                    color: $greyTextColor;
+                    transition: .5s;
+                    line-height: 0.7;
+                }
+
+                .input__name {
+                    font-size: 14px;
+                    color: $greyTextColor;
+                    border: 1px solid $greyTextColor;
+                    border-radius: 5px;
+                    outline: none;
+                    background: linear-gradient(to right bottom, $mainColor4 30%, $mainColor1);
+                    padding: 14px;
+                    min-width: 90%;
+                }
+
+                .modal-form {
+                    display: flex;
+                    flex-direction: column;
+
+                    ul {
+                        margin-top: 10px;
+                        list-style: none;
+                        padding: 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 30px;
+
+                        li {
+                            display: flex;
+                            justify-content: space-between;
+                            flex-direction: column;
+                            align-items: center;
+                            width: 100%;
+
+                            .movie__container {
+                                display: flex;
+                                .movie-backdrop {
+                                    width: 50%;
+                                    height: 100px;
+
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        border-radius: 5px;
+                                    }
+                                }
+
+                                .movie__data {
+                                    padding: 0 20px;
+                                    p {
+                                        margin-top: 0px;
+                                        font-size: 16px;
+                                        color: $whiteColor;
+                                        line-height: 1;
+
+                                        a {
+                                            font-size: 18px;
+                                        }
+                                    }
+
+                                    .film-data {
+                                        display: flex;
+
+                                        .genres {
+                                            display: flex;
+                                            flex-direction: row;
+                                            flex-wrap: wrap;
+                                        }
+                                    }
+
+                                    .countries {
+                                        margin-top: 5px;
+                                    }
+                                }
+                            }
+
+                            .movie__add {
+                                margin-top: 20px;
+                                margin-right: 0px;
+                                margin-left: -8px;
+                                background-color: #b8b9e0;
+                                color: #0a0a0a;
+                                border: none;
+                                width: 40%;
+                                height: 40px;
+                                text-align: center;
+                                border-radius: 4px;
+                                cursor: pointer;
+                                transition: .4s;
+                                font-size: 16px;
+                                font-weight: $MediumWeight;
+
+                                &:hover {
+                                    background-color: #d6d8ec;
+                                }
+                            }
+                        }
+                    }
+
+                    .navigation {
+                        display: flex;
+                        justify-content: center;
+                        gap: 30px;
+                        margin-top: 30px;
+                        margin-bottom: 50px;
+
+                        .navigation-btn {
+                            width: 50%;
+                            padding: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .filters-container ul {
+            list-style-type: none; /* Убираем точки */
+            padding: 0;
+            margin: 0;
+        }
     }
 }
 </style>
